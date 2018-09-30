@@ -35,12 +35,18 @@ public abstract class AbsGPCmd<Param, Ret> implements IGPCmd<Param, Ret>, GPCons
 
     protected ResponseAPDU unwrap(ResponseAPDU rsp) throws GPException {
         GlobalPlatform.SCPWrapper wrapper = mGPCtx.getWrapper();
-        return wrapper.unwrap(rsp);
+        if (wrapper != null) {
+            return wrapper.unwrap(rsp);
+        }
+        return rsp;
     }
 
     protected CommandAPDU wrap(CommandAPDU apdu) throws GPException {
         GlobalPlatform.SCPWrapper wrapper = mGPCtx.getWrapper();
-        return wrapper.wrap(apdu);
+        if (wrapper != null) {
+            return wrapper.wrap(apdu);
+        }
+        return apdu;
     }
 
     @Override

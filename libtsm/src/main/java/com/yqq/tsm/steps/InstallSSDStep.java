@@ -1,23 +1,16 @@
 package com.yqq.tsm.steps;
 
-import com.yqq.tsm.TSMStep;
-import com.yqq.tsm.param.ApduData;
+import com.yqq.tsm.TsmStep;
+import com.yqq.tsm.param.ApduStep;
+import com.yqq.tsm.param.TsmIn;
 
-import javax.smartcardio.CommandAPDU;
-import javax.smartcardio.ResponseAPDU;
+import javax.smartcardio.CardException;
 
-/**
- * Created by p_qingyuan on 2018/9/12.
- */
+import pro.javacard.gp.GPException;
 
-public class InstallSSDStep extends TSMStep {
+public class InstallSSDStep extends TsmStep {
     @Override
-    protected ApduData onProcessReq(int cmdIndex, byte[] param) {
-        return null;
-    }
-
-    @Override
-    protected ApduData onProcessRsp(int cmdIndex, byte[] param) {
-        return null;
+    protected boolean onSelfHandle(ApduStep tarApduStep, TsmIn tsmIn) throws CardException, GPException {
+        return true;
     }
 }

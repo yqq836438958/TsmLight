@@ -27,7 +27,12 @@ public class ApduStep {
     public List<ApduCmd> getListApdus() {
         return listApdus;
     }
-
+    public void appendCmd(ApduCmd _cmd) {
+        if(listApdus == null){
+            listApdus.add(_cmd);
+        }
+        _cmd.setIndex(listApdus.size()-1);
+    }
     public void setListApdus(List<ApduCmd> listApdus) {
         this.listApdus = listApdus;
     }

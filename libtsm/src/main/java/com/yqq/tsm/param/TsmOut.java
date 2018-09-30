@@ -1,16 +1,27 @@
 package com.yqq.tsm.param;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by p_qingyuan on 2018/9/13.
  */
 
-public class TsmResponse {
+public class TsmOut {
     private int errcode;//0 代表有后续命令，1代表已经finish,小于0代表异常
     private List<ApduStep> listSteps;
     private String session;
     private String token;//keep
+
+    public void appendApduStep(ApduStep _step, boolean clearOldData) {
+        if (listSteps != null && clearOldData) {
+            listSteps.clear();
+        }
+        if(listSteps == null){
+            listSteps = new ArrayList<>();
+        }
+        listSteps.add(_step);
+    }
 
     public int getErrcode() {
         return errcode;

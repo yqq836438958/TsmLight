@@ -1,6 +1,7 @@
 package com.yqq.tsm.param;
 
 import javax.smartcardio.CommandAPDU;
+import javax.smartcardio.ResponseAPDU;
 
 /**
  * Created by p_qingyuan on 2018/9/12.
@@ -51,5 +52,9 @@ public class ApduCmd {
 
     public void setResult(byte[] result) {
         this.result = result;
+    }
+
+    public ResponseAPDU getResponse(){
+        return new ResponseAPDU(result);
     }
 }
